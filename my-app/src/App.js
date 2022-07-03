@@ -2,13 +2,16 @@
 
 import { useEffect,useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPokemonAsync, addTodoAsync, showPokemon ,showPokemonName,getPokemonNameAsync} from "./features/pokemonSlice";
+import { getPokemonAsync, addTodoAsync, showPokemon ,showPokemonName,getPokemonNameAsync ,getPeriodId,showIdperiod} from "./features/pokemonSlice";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   const pokemon = useSelector(showPokemon);
   const pokemonName = useSelector(showPokemonName);
+  const PeriodId = useSelector(showIdperiod)
+  const [temp , setTemp] =useState('0983231111');
+  
   const dispatch = useDispatch();
   const [newTodo, setNewTodo] = useState({
     userId: 69,
@@ -32,9 +35,13 @@ export default function App() {
   // console.log(pokemonName)
   return (
     <div className="App">
+      <button onClick={() => (dispatch(getPeriodId(temp)),
+                            console.log("test"))}>Click{PeriodId}</button>
        {/* PokemonName หรือถ้ามี */}
+      
+       
        {pokemonName && (<div><div className="text-center"><h1>{pokemonName[0].name}</h1></div>
-      <div className="text-center"><img src={pokemonName[0].sprites.front_shiny} height="200"/></div>     
+      {/* <div className="text-center"><img src={pokemonName[0].sprites.front_shiny} height="200"/></div>      */}
     </div>
     )}
 

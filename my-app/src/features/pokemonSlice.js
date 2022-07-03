@@ -6,7 +6,8 @@ export const pokemonSlide = createSlice({
   name: "pokemon",
   initialState: {
     data: null,
-    data2:null
+    data2:null,
+    data3:null,
   },
   reducers: {
     addTodo: (state, action) => {
@@ -17,6 +18,9 @@ export const pokemonSlide = createSlice({
     },
     getPokemonName: (state, action) => {
       state.data2 = [action.payload];
+    },
+    getPeriodId: (state, action) => {
+      state.data3 = [action.payload];
     }
   }
 });
@@ -52,7 +56,8 @@ export const addTodoAsync = (data) => async (dispatch) => {
 
 
 
-export const { addTodo, getPokemon,getPokemonName} = pokemonSlide.actions;
+export const { addTodo, getPokemon,getPokemonName, getPeriodId} = pokemonSlide.actions;
+export const showIdperiod = (state) => state.pokemon.data3;
 export const showPokemon = (state) => state.pokemon.data;
 export const showPokemonName = (state) => state.pokemon.data2;
 export default pokemonSlide.reducer;
